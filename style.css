@@ -87,8 +87,16 @@ nav ul li a:hover::after{
     margin-top: 20%;
     font-size: 30px;
 }
+
+.moving_text {
+    display: inline-block; /* Ensure the text wraps */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow */
+    background: linear-gradient(to right, #00b09b, #96c93d);
+}
+
 .header_text p{
-    color:orchid;
+    color:rgba(0,0,0,.85);
 }
 .header_text h1{
     font-size: 50px;
@@ -131,11 +139,17 @@ nav ul li a:hover::after{
     font-family: 'Inter', sans-serif;
     color: rgb(182, 139, 139);
 } */
+.about_me{
+    border: 1px solid #f5f5f5;
+    padding: 5px;
+    border-radius: 16px;
+    background-color: floralwhite;
+}
+
 .about_me p{
     font-size: 14px;
     line-height: 1.6;
     color: #262626;
-    background-color: bisque;
 }
 
 
