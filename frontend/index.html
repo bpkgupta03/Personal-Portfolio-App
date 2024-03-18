@@ -9,7 +9,7 @@
     <title>Bhanu-Portfolio Website</title>
 </head>
 <body>
-    <nav>
+    <nav id="navbar">
             <a href="#"><img src="images/logo-bk.png" class="logo" /> </a>
             <ul id="sideMenu">
                 <li> <a href="#">Home</a> </li>
@@ -19,6 +19,7 @@
                 <li> <a href="#contact">Contact</a> </li>
                 <i class="fa-solid fa-xmark" onclick="closeMenu()"></i>
             </ul>
+            <div id="line"></div> <!-- Line element to animate -->
             <i class="fa-solid fa-bars" onclick="openMenu()"></i>
     </nav>
     
@@ -26,12 +27,11 @@
     <main>
             <div id="header">
                 <div class="container">
-                    
+                    <img class="my-img" src="images/bpk1.jpg" alt="">
                     <div class="header_text">
                         <p class="moving_text"></p>
                         <h1>Hi, I'm <br> <span>Bhanu Khandelwal</span> </h1>
                     </div>
-                    
                 </div>
             </div>
         
@@ -46,29 +46,31 @@
                         <div class="about-col-2">
                             <!-- ABout section -->
                             <h1 class="subtitle">About Me</h1>
+                            <h4 class="about_tagline">Full Stack Developer | Python | Angular | Flask | MYSQL | DSA </h4>
+                            <span id="read_more" onclick="explodeAbout()"> Read More ... </span>
                             <div class="about_me">
-                                <p>
-                                    🚀 Full Stack Developer with a passion for building seamless web experiences. I thrive in the convergence of frontend finesse and backend robustness.
-                                </p>
-                        
-                                <p>
-                                    💻 Expertise in Angular, React.js, Flask, and Node.js. I breathe life into ideas, crafting end-to-end solutions that elevate user experiences and drive business impact.
-                                </p>
-                        
-                                <p>
-                                    🛠️ Database maestro with MSSQL, crafting clean RESTful APIs, and ensuring top-notch performance. Proficient in Swagger and Postman for streamlined communication.
-                                </p>
-                        
-                                <p>
-                                    🌐 Always on the lookout for cutting-edge technologies. My code isn't just lines; it's a journey towards impactful digital solutions.
-                                </p>
-                                <p>
-                                    ⚙️ Solid foundation in <span class="highlight">Data Structures and Algorithms (DSA)</span>. Solved 200+ challenges on platforms like CodeStudio, GeeksforGeeks, and LeetCode.
-                                </p>
-                                <p>
-                                    🚀 Let's create something extraordinary together! Ready to conquer challenges and turn visions into reality.
-                                </p>
-                        
+                                <span id="about_more">
+                                    <p>
+                                        🚀 Full Stack Developer with a passion for building seamless web experiences. I thrive in the convergence of frontend finesse and backend robustness.
+                                    </p>
+                                    <p>
+                                        💻 Expertise in Angular, React.js, Flask, and Node.js. I breathe life into ideas, crafting end-to-end solutions that elevate user experiences and drive business impact.
+                                    </p>
+                            
+                                    <p>
+                                        🛠️ Database maestro with MSSQL, crafting clean RESTful APIs, and ensuring top-notch performance. Proficient in Swagger and Postman for streamlined communication.
+                                    </p>
+                            
+                                    <p>
+                                        🌐 Always on the lookout for cutting-edge technologies. My code isn't just lines; it's a journey towards impactful digital solutions.
+                                    </p>
+                                    <p>
+                                        ⚙️ Solid foundation in <span class="highlight">Data Structures and Algorithms (DSA)</span>. Solved 200+ challenges on platforms like CodeStudio, GeeksforGeeks, and LeetCode.
+                                    </p>
+                                    <p>
+                                        🚀 Let's create something extraordinary together! Ready to conquer challenges and turn visions into reality.
+                                    </p>
+                                </span>   
                             </div>
                             <div class="tab-tiles">
                                 <p class="tab-links active-link" onclick="openTab('skills')"> Skills </p>
@@ -244,7 +246,6 @@
                                 <h3>Social Media App</h3>
                                 <p>Inspire. Connect. Share. Repeat.</p>
                                 <a href=""> <i class="fa-solid fa-up-right-from-square"></i> </a>
-                                
                             </div>
                         </div>
                         <div class="work">
@@ -289,13 +290,16 @@
                                 <input type="text" name="full_name" placeholder="Your Full Name" required> 
                                 <input type="email" name="Email" placeholder="Your Email" required>
                                 <textarea name="message" cols="30" rows="10" placeholder="Enquiry/message" required></textarea>
-                                <button type="submit" class="btn btn-2"> Submit </button>
+                                <button type="submit" class="btn btn-2"> 
+                                    <span id="submitText"> Submit </span> 
+                                    <div id="loader" class="loader"></div>
+                                </button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-        
+
             <div class="copyright">
                 <p>Made by <i class="fa-solid fa-heart"> BPK </i>  </p>
             </div>

@@ -1,0 +1,28 @@
+email:
+  username: bhanukhandelwal309@gmail.com
+  password: xtvh wvgx ylnp gamo
+  from: bhanukhandelwal309@gmail.com
+  port: 465
+  server: smtp.gmail.com
+  starttls: false
+  ssl_tls: true
+  use_credentials: true
+  validate_certs: true
+
+mongodb:
+  connection_string: mongodb+srv://bpkhandelwal03:Bpgupta03@cluster0.pohxy0f.mongodb.net
+  db_name: "Email_details"
+  collection_name: "Enquiry"
+
+cors:
+  allow_origins:
+    - "http://127.0.0.1:5501"
+    - "https://bpk-portfolio.netlify.app/"
+  allow_credentials: true
+  allow_methods:
+    - "GET"
+    - "POST"
+    - "PUT"
+    - "DELETE"
+  allow_headers:
+    - "*"

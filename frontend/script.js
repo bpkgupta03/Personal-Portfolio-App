@@ -49,6 +49,7 @@ function showExp(expId) {
 
 function submitForm(event) {
   event.preventDefault();
+  showLoader();
   var formData = new FormData(document.getElementById("myForm"));
   const url = "http://localhost:8000/submit/";
   fetch(url, {
@@ -56,26 +57,70 @@ function submitForm(event) {
     body: formData,
   })
     .then((response) => {
-      if (!response.ok) {
+      console.log(response)
+      if (response.status !== 200) {
         throw new Error("Failed to submit form");
       }
       return response.json();
     })
     .then((data) => {
+      hideLoader();
       // Display success message using Toastify
       Toastify({
         text: data.message,
-        duration:5000,
+        duration:3000,
         close: true,
-        gravity: "toastify-top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
+        gravity: "toastify-bottom", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
         stopOnFocus: true,
         style: {
           background: "linear-gradient(to right, #00b09b, #96c93d)",
         },
       }).showToast();
+      clearForm();
     })
     .catch((error) => {
-      alert("An error occurred while submitting the form");
+      hideLoader();
+      Toastify({
+        text: error.message,
+        duration:3000,
+        close: true,
+        gravity: "toastify-bottom", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
+        stopOnFocus: true,
+        style: {
+          background: "red",
+        },
+      }).showToast();
     });
 }
+
+function showLoader(){
+  document.getElementById("loader").style.display="block";
+  document.getElementById("submitText").style.display = "none";
+}
+function hideLoader(){
+  document.getElementById("loader").style.display="none";
+  document.getElementById("submitText").style.display = "block";
+}
+function clearForm(){
+  document.getElementById("myForm").reset();
+}
+function explodeAbout(){
+  document.getElementById("about_more").style.display="block";
+  document.getElementById("read_more").style.display="none";
+}
+// scroll line move beneath navbar
+window.addEventListener('scroll', function() {
+  const navbar = document.getElementById('navbar');
+  const line = document.getElementById('line');
+  
+  // Calculate the scroll percentage
+  const scrollPercent = (document.documentElement.scrollTop || document.body.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight) * 100;
+ 
+  // Calculate the width of the line based on the scroll percentage
+  const lineWidth = scrollPercent + '%';
+  
+  // Update the width of the line
+  line.style.width = lineWidth;
+});
