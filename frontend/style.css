@@ -399,7 +399,7 @@ nav ul li a:hover::after {
 .service-lists div:hover {
   /* background: #ff004f; */
   transform: translateY(-10px);
-  animation: lineMove 0.2s infinite alternate; /* Animation for moving line */
+  animation: lineMove 0.5s infinite alternate; /* Animation for moving line */
 }
 @keyframes lineMove {
   0% {
@@ -626,7 +626,6 @@ nav .fa-solid {
   .logo {
     width: 60px;
     position: relative;
-    top: 5px;
     left: -16px;
   }
   nav {
@@ -636,6 +635,12 @@ nav .fa-solid {
     background-image: url(images/phn-bg1.png);
     background-size: cover;
     background-position: center;
+  }
+  .my-img{
+    display: none;
+  }
+  #read_more{
+    margin-right: 30px;
   }
   .header_text {
     margin-top: 100%;
