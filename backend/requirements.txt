@@ -3,4 +3,4 @@ fastapi-mail
 motor
 pymongo
 uvicorn
-yaml
+PyYAML
