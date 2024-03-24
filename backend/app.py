@@ -40,7 +40,7 @@ conf = ConnectionConfig(
     MAIL_PASSWORD=os.environ.get('EMAIL_PASSWORD'),
     MAIL_FROM=os.environ.get('EMAIL_FROM'),
     MAIL_PORT=int(os.environ.get('EMAIL_PORT')),
-    MAIL_SERVER=os.environ.get('EMAIL_PASSWORD'),
+    MAIL_SERVER=os.environ.get('EMAIL_SERVER'),
     MAIL_STARTTLS=os.environ.get('EMAIL_STARTTLS').lower() == 'true',
     MAIL_SSL_TLS=os.environ.get('EMAIL_SSL_TLS').lower() == 'true',
     USE_CREDENTIALS=os.environ.get('USE_CREDENTIALS').lower() == 'true',

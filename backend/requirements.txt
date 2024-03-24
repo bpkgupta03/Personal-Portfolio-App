@@ -4,3 +4,4 @@ motor
 pymongo
 uvicorn
 PyYAML
+python-multipart
