@@ -5,39 +5,58 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import asyncio
 from fastapi.middleware.cors import CORSMiddleware
 import yaml
+import os
 
 app = FastAPI()
 
 # Load configuration from file
-with open("config.yaml", "r") as config_file:
-    config = yaml.safe_load(config_file)
+# with open("config.yaml", "r") as config_file:
+#     config = yaml.safe_load(config_file)
 
 # Set up CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=config["cors"]["allow_origins"],
-    allow_credentials=config["cors"]["allow_credentials"],
-    allow_methods=config["cors"]["allow_methods"],
-    allow_headers=config["cors"]["allow_headers"],
+    allow_origins="https://bpk-portfolio.netlify.app/",
+    allow_credentials=True,
+    allow_methods="POST",
+    allow_headers="*",
 )
 
 # Define email configuration
+# conf = ConnectionConfig(
+#     MAIL_USERNAME=config['email']['username'],
+#     MAIL_PASSWORD=config['email']['password'],
+#     MAIL_FROM=config['email']['from'],
+#     MAIL_PORT=config['email']['port'],
+#     MAIL_SERVER=config['email']['server'],
+#     MAIL_STARTTLS=config['email']['starttls'],
+#     MAIL_SSL_TLS=config['email']['ssl_tls'],
+#     USE_CREDENTIALS=config['email']['use_credentials'],
+#     VALIDATE_CERTS=config['email']['validate_certs']
+# )
+
 conf = ConnectionConfig(
-    MAIL_USERNAME=config['email']['username'],
-    MAIL_PASSWORD=config['email']['password'],
-    MAIL_FROM=config['email']['from'],
-    MAIL_PORT=config['email']['port'],
-    MAIL_SERVER=config['email']['server'],
-    MAIL_STARTTLS=config['email']['starttls'],
-    MAIL_SSL_TLS=config['email']['ssl_tls'],
-    USE_CREDENTIALS=config['email']['use_credentials'],
-    VALIDATE_CERTS=config['email']['validate_certs']
+    MAIL_USERNAME=os.environ.get('EMAIL_USERNAME'),
+    MAIL_PASSWORD=os.environ.get('EMAIL_PASSWORD'),
+    MAIL_FROM=os.environ.get('EMAIL_FROM'),
+    MAIL_PORT=int(os.environ.get('EMAIL_PORT')),
+    MAIL_SERVER=os.environ.get('EMAIL_PASSWORD'),
+    MAIL_STARTTLS=os.environ.get('EMAIL_STARTTLS').lower() == 'true',
+    MAIL_SSL_TLS=os.environ.get('EMAIL_SSL_TLS').lower() == 'true',
+    USE_CREDENTIALS=os.environ.get('USE_CREDENTIALS').lower() == 'true',
+    VALIDATE_CERTS=os.environ.get('VALIDATE_CERTS').lower() == 'true',
 )
 
-# Replace these with your MongoDB details
-MONGO_URI = config['mongodb']['connection_string']
-DB_NAME = config['mongodb']['db_name']
-MONGO_COLLECTION=config['mongodb']['collection_name']
+# # Replace these with your MongoDB details
+# MONGO_URI = config['mongodb']['connection_string']
+# DB_NAME = config['mongodb']['db_name']
+# MONGO_COLLECTION=config['mongodb']['collection_name']
+
+MONGO_URI = "mongodb+srv://bpkhandelwal03:Bpgupta03@cluster0.pohxy0f.mongodb.net"
+DB_NAME = "Email_details"
+MONGO_COLLECTION="Enquiry"
+
+
 
 async def save_to_mongodb(data: dict):
     try:
